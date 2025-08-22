@@ -1,18 +1,19 @@
-#%% tìm max min
+#%% tìm max min trong một dãy ký tự. bất kỳ nhập vào. Nếu dãy ký tự chứa chữ thì chỉ check những ký tự là số, ký tự chữ liệt kê ra thành invalid.
 import math
 while True:
-    numbers=input("please enter your numbers, separated by comma")
-    number=numbers.split(",")
-    set={float(numbers.strip()) for numbers in number}
-    print(f"the smallest number is {min(set)}")
-    print(f"The highest number is {max(set)}")
-    for n in number:
-        try:
+    numbers=input("please enter your numbers, separated by comma").strip().split(",")
+    num_set=set()
+    notnum_set=set()
+    for n in numbers:
+        try: 
             float(n)
-            continue
-        except:
-            print(f"The number {n} is invalid")
-            continue
-
+            num_set.add(float(n))
+        except ValueError:
+            notnum_set.add(n)
+    if num_set:
+        print(f"min is {min(num_set)}")
+        print(f"max is {max(num_set)}")
+    if notnum_set:
+        print(f"{notnum_set} is invalid")
 
 
